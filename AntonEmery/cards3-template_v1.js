@@ -19,9 +19,9 @@ function makeCard(id) {
       rank: function() { // --> 1..13, NaN
       if (this.id > 51 || typeof(this.id) == 'string' || this.id < 0 || this.id%1 !== 0 || this.id == undefined) {
       return NaN;
-    } else {
-    var rankNumber = Math.ceil((this.id + 1) / 4); //rank number is one more than array index since arrays start at 0 but ranks starts at 1
-    return rankNumber;
+      } else {
+        var rankNumber = Math.ceil((this.id + 1) / 4); //rank number is one more than array index since arrays start at 0 but ranks starts at 1
+        return rankNumber;
     }
   }
   return newCard;/* that instance here */;
