@@ -1,3 +1,12 @@
+var cardRank = ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 
+                'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King'];
+
+var cardSuit = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
+
+
+
+
+
 function makeCard(id) {
     // If id is invalid (out of range, etc)
     if(id > 51 || typeof(id) != 'number') {
@@ -10,6 +19,7 @@ function makeCard(id) {
     newCard.rank = makeCard.rank;
     newCard.suit = makeCard.suit;
     newCard.color = makeCard.color;
+    newCard.cardName = makeCard.cardName;
 
 
     // Otherwise build an instance object with an id property,
@@ -64,7 +74,14 @@ makeCard.cardName = function() { //--> string, NaN
     // This method can't have the key 'name' within the makeCard function,
     // but instance objects can store a reference to it called 'name'
 
-    // code here...
+    if (this.id == false || this.id < 0 || this.id > 51 || this.id%1 !== 0) {  // id == NaN does not work because NaN cannot equal NaN
+    return NaN;
+      } else {
+      var cardName = this.rank(this.id);
+      var cSuit = this.suit(this.id);
+      var fullName = (cardRank[cardName - 1] + ' of ' + cardSuit[cSuit - 1]);
+      return fullName;
+  }
 };
 
 
