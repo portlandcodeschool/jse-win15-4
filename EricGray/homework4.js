@@ -4,41 +4,46 @@ var makeCard = function(id) {
 
 	var newCard = {}; //container for new card!
 		newCard.id = id;
-		newCard.ranks = ["Ace ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", 
-"Eight ", "Nine ", "Ten ", "Jack ", "Queen ", "King "];
-		newCard.suits = [" Hearts", " Diamonds", " Spades", " Clubs"];
-
-
-		newCard.rank = function(){
-			//var r = id / 4;
-			return Math.floor((this.id/4) + 1);
-
-		};
-
-		newCard.suit = function(){
-				return (this.id%4)+1;
-		}
-
-		newCard.color = function(){
-			if (this.suit(this.id) == 1 || this.suit(this.id) == 2){
-				return "red";
-			} else if (this.suit(this.id) == 3 ||  this.suit(this.id) == 4){
-				return "black";
-			};
-
-		};
-
-		newCard.cardName = function(){
-			var rankID = this.rank(this.id) - 1;
-			var suitID = this.suit(this.id) - 1;
-			var name = this.ranks[rankID] + "of" + this.suits[suitID];
-			return name;
-		};
-
+		newCard.suits = makeCard.suits;
+		newCard.ranks = makeCard.ranks;
+		newCard.rank = makeCard.rank;
+		newCard.suit = makeCard.suit;
+		newCard.color = makeCard.color;
+		newCard.cardName = makeCard.cardName;
 
 	return newCard;
 
 };
+
+
+		makeCard.ranks = ["Ace ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", 
+						"Eight ", "Nine ", "Ten ", "Jack ", "Queen ", "King "];
+		
+		makeCard.suits = [" Hearts", " Diamonds", " Spades", " Clubs"];
+
+		makeCard.rank = function(){
+						return Math.floor((this.id/4) + 1);
+		};
+
+		makeCard.suit = function(){
+						return (this.id%4)+1;
+		}
+
+		makeCard.color = function(){
+						if (this.suit(this.id) == 1 || this.suit(this.id) == 2){
+							return "red";
+						} else if (this.suit(this.id) == 3 ||  this.suit(this.id) == 4){
+							return "black";
+						};
+
+					};
+
+		makeCard.cardName = function(){
+						var rankID = this.rank(this.id) - 1;
+						var suitID = this.suit(this.id) - 1;
+						var name = this.ranks[rankID] + "of" + this.suits[suitID];
+						return name;
+					};	
 
 //test vars
 var card1 = makeCard(1);
