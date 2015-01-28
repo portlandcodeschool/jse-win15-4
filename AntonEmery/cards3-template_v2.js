@@ -35,6 +35,10 @@ function makeCard(id) {
     return newCard;
 };
 
+var card = makeCard(4);
+makeCard.isCard(card);  //call is card function on the current card
+
+
 //-----------------------------
 // Methods called though instances (where 'this' means the instance):
 //-----------------------------
