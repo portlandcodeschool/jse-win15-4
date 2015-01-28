@@ -31,8 +31,9 @@ function makeCard(id) {
     // Each method property should be just a link to the corresponding method
     //  of the factory itself.
 
+    //need to figure out how to call isCard method
     return newCard;
-}
+};
 
 //-----------------------------
 // Methods called though instances (where 'this' means the instance):
@@ -91,8 +92,12 @@ makeCard.cardName = function() { //--> string, NaN
 
 makeCard.isCard = function(thing) { // --> true,false
     // return true if thing is a valid card instance made by this factory
-
-}
+    if(thing.rank == this.rank) {  //makeCard;
+      return true;
+    } else {
+      return false;
+    }
+};
 
 //---------------------
 // Additional factory properties
