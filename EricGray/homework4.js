@@ -20,6 +20,7 @@ var makeCard = function(id) {
 						"Eight ", "Nine ", "Ten ", "Jack ", "Queen ", "King "];
 		
 		makeCard.suits = [" Hearts", " Diamonds", " Spades", " Clubs"];
+		makeCard.fullSet = []
 
 		makeCard.rank = function(){
 						return Math.floor((this.id/4) + 1);
@@ -52,7 +53,18 @@ var makeCard = function(id) {
 							return true
 						}
 
-		};	
+		};
+
+		makeCard.makeSet = function() {
+			for (i = 0; i<52; i++){
+				console.log(cardi = makeCard(i));
+				makeCard.fullSet.push(cardi);
+			}
+
+
+
+
+		}
 
 //test vars
 var card1 = makeCard(1);
