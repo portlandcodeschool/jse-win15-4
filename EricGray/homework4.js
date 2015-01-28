@@ -43,7 +43,16 @@ var makeCard = function(id) {
 						var suitID = this.suit(this.id) - 1;
 						var name = this.ranks[rankID] + "of" + this.suits[suitID];
 						return name;
-					};	
+					};
+
+		makeCard.isCard = function(obj){
+						if (!obj){
+							return false
+						} else {
+							return true
+						}
+
+		};	
 
 //test vars
 var card1 = makeCard(1);
