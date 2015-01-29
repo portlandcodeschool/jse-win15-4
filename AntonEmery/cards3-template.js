@@ -9,9 +9,10 @@ var cardSuit = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
 
 function makeCard(id) {
     // If id is invalid (out of range, etc)
-    if(id > 52 || typeof(id) != 'number') {
+    if(id > 51 || typeof(id) != 'number' || id < 0) {
     return null;
     };
+
 
     var newCard = {
         id: id
@@ -20,6 +21,8 @@ function makeCard(id) {
     newCard.suit = makeCard.suit;
     newCard.color = makeCard.color;
     newCard.cardName = makeCard.cardName;
+
+
 
 
     // Otherwise build an instance object with an id property,
@@ -35,8 +38,6 @@ function makeCard(id) {
     return newCard;
 };
 
-var card = makeCard(4);
-makeCard.isCard(card);  //call is card function on the current card
 
 
 //-----------------------------
@@ -44,7 +45,7 @@ makeCard.isCard(card);  //call is card function on the current card
 //-----------------------------
 
 makeCard.rank = function() { // --> 1..13, NaN
-    if (this.id > 52 || typeof(this.id) == 'string' || this.id < 0 || this.id%1 !== 0 || this.id == undefined) {
+    if (this.id > 51 || typeof(this.id) == 'string' || this.id < 0 || this.id%1 !== 0 || this.id == undefined) {
       return NaN;
       } else {
         var rankNumber = Math.ceil((this.id + 1) / 4); //rank number is one more than array index since arrays start at 0 but ranks starts at 1
@@ -54,7 +55,7 @@ makeCard.rank = function() { // --> 1..13, NaN
 
 
 makeCard.suit = function() { // --> 1..4, NaN
-        if (this.id > 52 || typeof(this.id) == 'boolean' || this.id < 0 || this.id%1 !== 0) {
+        if (this.id > 51 || typeof(this.id) == 'boolean' || this.id < 0 || this.id%1 !== 0) {
         return NaN;
     } else {
     var suitNumber = (this.id % 4) + 1; //suit number is one more than array index
@@ -63,13 +64,13 @@ makeCard.suit = function() { // --> 1..4, NaN
 };
    
 makeCard.color = function() { // -->"red,"black",NaN
-  if (typeof(this.id) == 'string' || this.id == true) {
+  if (typeof(this.id) == 'string' || typeof(this.id) == 'boolean') {
     return NaN;
   } else {
-    var cardColor = this.suit(id);
+    var cardColor = this.suit(this.id);
     if (cardColor >= 0 && cardColor <= 1) {
       cardColor = 'red';
-    } else if (cardColor >= 2 && cardColor <= 3) {
+    } else if (cardColor >= 2 && cardColor <= 4) {
       cardColor = 'black';
     }
   } return cardColor;
@@ -107,13 +108,16 @@ makeCard.isCard = function(thing) { // --> true,false
 // Additional factory properties
 //---------------------
 
+makeCard.fullDeck = [];
+
+
 makeCard.fullSet = function() {   //<-- instead, generate array of 52 card instances
-  var fullDeck = [];
-  for(i=1; i<53; i++) {
-  fullDeck.push(makeCard(i));
+  for(i=0; i<52; i++) {
+  this.fullDeck.push(makeCard(i));
   }
-  return fullDeck;
-  } 
+
+  return this.fullDeck;
+};
 
 
 
@@ -141,8 +145,8 @@ assert(card5.suit()===2,  "Test 5 failed");
 assert(card51.suit()===4, "Test 6 failed");
 assert(card0.color()==='red',   "Test 10 failed");
 assert(card3.color()==='black', "Test 11 failed");
-assert(card5.name()==='Two of Diamonds', "Test 12 failed");
-assert(card51.name()==='King of Clubs',  "Test 13 failed");
+assert(card5.cardName()==='Two of Diamonds', "Test 12 failed");
+assert(card51.cardName()==='King of Clubs',  "Test 13 failed");
 
 // Test makeCard.isCard:
 assert(makeCard.isCard(card0),  "Test 21 failed")
@@ -160,8 +164,8 @@ assert(!makeCard(true),"Test 31 failed");
 
 
 // Test fullSet array:
-assert(typeof makeCard.fullSet === 'object', "Test 40 failed");
-assert(makeCard.fullSet.length === 52, "Test 41 failed");
+assert(typeof makeCard.fullSet() === 'object', "Test 40 failed");  //had to change this from .fullSet
+assert(makeCard.fullDeck.length === 52, "Test 41 failed");  //had to change this from fullSet
 assert(makeCard.isCard(makeCard.fullSet[0]), "Test 42 failed")
 assert(makeCard.fullSet[5].name() === card5.name(), "Test 43 failed");
 assert(makeCard.fullSet[51].name() === card51.name(), "Test 44 failed");
