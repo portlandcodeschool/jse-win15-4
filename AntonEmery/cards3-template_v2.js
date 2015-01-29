@@ -9,7 +9,7 @@ var cardSuit = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
 
 function makeCard(id) {
     // If id is invalid (out of range, etc)
-    if(id > 51 || typeof(id) != 'number') {
+    if(id > 52 || typeof(id) != 'number') {
     return null;
     };
 
@@ -44,7 +44,7 @@ makeCard.isCard(card);  //call is card function on the current card
 //-----------------------------
 
 makeCard.rank = function() { // --> 1..13, NaN
-    if (this.id > 51 || typeof(this.id) == 'string' || this.id < 0 || this.id%1 !== 0 || this.id == undefined) {
+    if (this.id > 52 || typeof(this.id) == 'string' || this.id < 0 || this.id%1 !== 0 || this.id == undefined) {
       return NaN;
       } else {
         var rankNumber = Math.ceil((this.id + 1) / 4); //rank number is one more than array index since arrays start at 0 but ranks starts at 1
@@ -54,7 +54,7 @@ makeCard.rank = function() { // --> 1..13, NaN
 
 
 makeCard.suit = function() { // --> 1..4, NaN
-        if (this.id > 51 || typeof(this.id) == 'boolean' || this.id < 0 || this.id%1 !== 0) {
+        if (this.id > 52 || typeof(this.id) == 'boolean' || this.id < 0 || this.id%1 !== 0) {
         return NaN;
     } else {
     var suitNumber = (this.id % 4) + 1; //suit number is one more than array index
@@ -107,7 +107,14 @@ makeCard.isCard = function(thing) { // --> true,false
 // Additional factory properties
 //---------------------
 
-makeCard.fullSet = []; //<-- instead, generate array of 52 card instances
+makeCard.fullSet = function() {   //<-- instead, generate array of 52 card instances
+  var fullDeck = [];
+  for(i=1; i<53; i++) {
+  fullDeck.push(makeCard(i));
+  }
+  return fullDeck;
+  } 
+
 
 
 
