@@ -13,18 +13,20 @@ function makeDeque(values) { //input needs to be [1, 2, 3]
 			array: values
 		};
 
-	newDeque.length = makeDeque.length;
+	newDeque.length2 = makeDeque.length2;
 
 	return newDeque;
 };
 
 // The factory's instance methods:
-makeDeque.length = function() {
-		
+makeDeque.length2 = function() {
+	var length = this['array'].length;
+	return length;
 }
 
 makeDeque.top = function() {
-	//...
+	var top = ;
+	return top;
 }
 
 makeDeque.bottom = function() {
