@@ -5,9 +5,9 @@
 function makeDeque(values) { //values should be an array i guess
 	// ...
 	// return an instance object
-	var newDeque = {};
-	cardsInDeck = values;
-	newDeque.length = makeDeque.length;
+	var  newDeque = {};
+	newDeque.cardsInDeck = values;
+	newDeque.length = makeDeque.length2;
 	newDeque.top = makeDeque.top;
 	newDeque.bottom = makeDeque.bottom;
 	newDeque.push = makeDeque.push;
@@ -17,89 +17,98 @@ function makeDeque(values) { //values should be an array i guess
 	newDeque.sort = makeDeque.sort;
 	newDeque.map = makeDeque.map;
 	newDeque.pop = makeDeque.pop;
-}
+
+	return newDeque;
+};
 
 // The factory's instance methods:
-makeDeque.length = function() {
+makeDeque.length2 = function() {
 	//...
-	return cardsInDeck.length;
-}
+	console.log(this.cardsInDeck);
+	return this.cardsInDeck.length;
+};
 
 makeDeque.top = function() {
 	//...
-	return cardsInDeck[this.length-1];
-}
+	return this.cardsInDeck[this.cardsInDeck.length-1];
+};
 
 makeDeque.bottom = function() {
 	//...
-	return cardsInDeck[0];
-}
+	return this.cardsInDeck[0];
+};
 
 makeDeque.pop = function() {
 	//...
-	cardsInDeck.pop();
-	return makeDeque.top;
-}
+	this.cardsInDeck.pop();
+	return this.top;
+};
 
 makeDeque.push = function(val) {
 	//...
-	cardsInDeck.push(val);
-	return makeDeque.top;
-}
+	this.cardsInDeck.push(val);
+	return this.top();
+};
 
 makeDeque.shift = function() {
 	//...
-	cardsInDeck.shift();
-	return cardsInDeck[0];
-}
+	this.cardsInDeck.shift();
+	return this.cardsInDeck[0];
+};
 
 makeDeque.unshift = function(val) {
 	//...
-	cardsInDeck.unshift(val);
-	return cardsInDeck[0];
-}	
+	this.cardsInDeck.unshift(val);
+	return this.cardsInDeck[0];
+};	
 
-makeDeque.cut = function() {
+makeDeque.cut = function() { //future -> helper function to decide even/odd/less than 2
+							 //cards. clean up pushing 2 arrays to 1 array.
 	//...
-	var middle;
-	if (cardsInDeck.length < 2) {
+	var middle;		//variable to contain midpoint for cut
+	if (this.cardsInDeck.length < 2) {	//don't cut for only 1 or 0 cards
 		console.log("no changes necessary");
 		return;
-	} else if (cardsInDeck.length % 2 == 0) {
-		var middle = cardsInDeck.length / 2;
-		return middle;
+	} else if (this.cardsInDeck.length % 2 == 0) {
+		var middle = this.cardsInDeck.length / 2;
 	} else {
-		var middle = (cardsInDeck.length+1) / 2;
-		return middle;
+		var middle = (this.cardsInDeck.length+1) / 2;
 	}
-	var top = [];
-	var bottom = [];
-
-	for (i = middle; i <= cardsInDeck.length-1; i++)
-		top = [i];
-	for (i = 0; i <= middle; i++)
-		bottom = [i];
-	cardsInDeck = top + bottom;
+	var late = [];
+	var early = [];
+	for (i = middle+1; i <= this.cardsInDeck.length; i++)
+		late.push(i);
+	for (i = this.cardsInDeck[0]; i <= middle; i++)
+		early.push(i);
+	this.cardsInDeck = [];
+	for (i = 0; i <= late.length-1; i++)
+		this.cardsInDeck.push(late[i]);
+	for (i = 0; i <= early.length-1; i++)
+		this.cardsInDeck.push(early[i]);
+	//this.cardsInDeck = [late, early];
 
 	//figure out where the middle is;	
 	//less than two items? ignore;
 	//odd number? round up from middle;
 	//split me into two arrays;
 	//change the top array to the bottom array;
-	return cardsinDeck;
-}
+	return this.cardsInDeck;
+};
 
 makeDeque.map = function(convertValFn) {
 	//...
-	mappedArray = cardsInDeck.map(convertValFn);
+	mappedArray = this.cardsInDeck.map(convertValFn);
 	return mappedArray;
-}
+};
 
 makeDeque.sort = function(compareValsFn) {
 	//...
-	sortedArray = cardsInDeck.sort(compareValsFn);
+	sortedArray = this.cardsInDeck.sort(compareValsFn);
 	return sortedArray;
-}
+};
+
+//test variable
+var dequeOne = makeDeque([1, 2, 3, 4, 5, 6])
 
 // Feel free to write tests for your code!
 
