@@ -41,7 +41,7 @@ makeDeque.bottom = function() {
 makeDeque.pop = function() {
 	//...
 	this.cardsInDeck.pop();
-	return this.top;
+	return this.top();
 };
 
 makeDeque.push = function(val) {
