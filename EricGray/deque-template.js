@@ -2,11 +2,11 @@
 //-------
 
 // The factory itself:
-function makeDeque(values) {
+function makeDeque(values) { //values should be an array i guess
 	// ...
 	// return an instance object
 	var newDeque = {};
-	cardsInDeck = [values];
+	cardsInDeck = values;
 	newDeque.length = makeDeque.length;
 	newDeque.top = makeDeque.top;
 	newDeque.bottom = makeDeque.bottom;
@@ -61,15 +61,44 @@ makeDeque.unshift = function(val) {
 
 makeDeque.cut = function() {
 	//...
-	
+	var middle;
+	if (cardsInDeck.length < 2) {
+		console.log("no changes necessary");
+		return;
+	} else if (cardsInDeck.length % 2 == 0) {
+		var middle = cardsInDeck.length / 2;
+		return middle;
+	} else {
+		var middle = (cardsInDeck.length+1) / 2;
+		return middle;
+	}
+	var top = [];
+	var bottom = [];
+
+	for (i = middle; i <= cardsInDeck.length-1; i++)
+		top = [i];
+	for (i = 0; i <= middle; i++)
+		bottom = [i];
+	cardsInDeck = top + bottom;
+
+	//figure out where the middle is;	
+	//less than two items? ignore;
+	//odd number? round up from middle;
+	//split me into two arrays;
+	//change the top array to the bottom array;
+	return cardsinDeck;
 }
 
 makeDeque.map = function(convertValFn) {
 	//...
+	mappedArray = cardsInDeck.map(convertValFn);
+	return mappedArray;
 }
 
 makeDeque.sort = function(compareValsFn) {
 	//...
+	sortedArray = cardsInDeck.sort(compareValsFn);
+	return sortedArray;
 }
 
 // Feel free to write tests for your code!
