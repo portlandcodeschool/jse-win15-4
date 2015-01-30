@@ -108,18 +108,18 @@ makeCard.isCard = function(thing) { // --> true,false
 // Additional factory properties
 //---------------------
 
-makeCard.fullDeck = [];
+makeCard.fullSet = [];
 
 
-makeCard.fullSet = function() {   //<-- instead, generate array of 52 card instances
+makeCard.fullDeck = function() {   //<-- instead, generate array of 52 card instances
   for(i=0; i<52; i++) {
-  this.fullDeck.push(makeCard(i));
+  this.fullSet.push(makeCard(i));
   }
 
-  return this.fullDeck;
+  return this.fullSet;
 };
 
-
+makeCard.fullDeck();
 
 
 //----------------------
@@ -164,11 +164,11 @@ assert(!makeCard(true),"Test 31 failed");
 
 
 // Test fullSet array:
-assert(typeof makeCard.fullSet() === 'object', "Test 40 failed");  //had to change this from .fullSet
-assert(makeCard.fullDeck.length === 52, "Test 41 failed");  //had to change this from fullSet
+assert(typeof makeCard.fullSet === 'object', "Test 40 failed");
+assert(makeCard.fullSet.length === 52, "Test 41 failed");
 assert(makeCard.isCard(makeCard.fullSet[0]), "Test 42 failed")
-assert(makeCard.fullSet[5].name() === card5.name(), "Test 43 failed");
-assert(makeCard.fullSet[51].name() === card51.name(), "Test 44 failed");
+assert(makeCard.fullSet[5].cardName() === card5.cardName(), "Test 43 failed");
+assert(makeCard.fullSet[51].cardName() === card51.cardName(), "Test 44 failed");
 
 // Test that methods are shared:
 assert(card0 !== card3, "Test 50 failed"); //first prove different cards
