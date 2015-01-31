@@ -23,11 +23,11 @@ var makeCard = function(id) {
 		makeCard.fullSet = []
 
 		makeCard.rank = function(){
-						return Math.floor((this.id/4) + 1);
+						return this.ranks[Math.floor((this.id/4) + 1)];
 		};
 
 		makeCard.suit = function(){
-						return (this.id%4)+1;
+						return this.suits[(this.id%4)+1];
 		}
 
 		makeCard.color = function(){
@@ -40,9 +40,9 @@ var makeCard = function(id) {
 					};
 
 		makeCard.cardName = function(){
-						var rankID = this.rank(this.id) - 1;
-						var suitID = this.suit(this.id) - 1;
-						var name = this.ranks[rankID] + "of" + this.suits[suitID];
+						var rankID = this.rank();
+						var suitID = this.suit();
+						var name = rankID  + "of" + suitID;
 						return name;
 					};
 
@@ -56,12 +56,13 @@ var makeCard = function(id) {
 		};
 
 		makeCard.makeSet = function() {
-			for (i = 0; i<52; i++){
-				console.log(cardi = makeCard(i));
-				makeCard.fullSet.push(cardi);
+					for (i = 0; i<52; i++){
+					console.log(cardi = makeCard(i));
+					makeCard.fullSet.push(cardi);
+
 			}
 
-
+			return makeCard.fullSet;
 
 
 		}
@@ -72,5 +73,4 @@ var card15 = makeCard(15);
 var card43 = makeCard(43);
 var card51 = makeCard(51);
 
-//Factory Work
-
+// Question 2 Stacking the Deck
