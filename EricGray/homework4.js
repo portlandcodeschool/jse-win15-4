@@ -15,11 +15,17 @@ var makeCard = function(id) {
 
 };
 
+		makeCard.ranks = {1: "Ace", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6:"Six",
+						7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten", 11: "Jack", 12: "Queen",
+						13: "King"};
+		/*makeCard.ranks = ["Ace ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", 
+						"Eight ", "Nine ", "Ten ", "Jack ", "Queen ", "King "];*/
 
-		makeCard.ranks = ["Ace ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", 
-						"Eight ", "Nine ", "Ten ", "Jack ", "Queen ", "King "];
-		
-		makeCard.suits = [" Hearts", " Diamonds", " Spades", " Clubs"];
+
+		makeCard.suits = {1: "Heart", 2: "Diamonds", 3: "Spades", 4: "Clubs"};
+
+		/* makeCard.suits = [" Hearts", " Diamonds", " Spades", " Clubs"]; */
+
 		makeCard.fullSet = []
 
 		makeCard.rank = function(){
@@ -42,7 +48,7 @@ var makeCard = function(id) {
 		makeCard.cardName = function(){
 						var rankID = this.rank();
 						var suitID = this.suit();
-						var name = rankID  + "of" + suitID;
+						var name = rankID  + " of " + suitID;
 						return name;
 					};
 
