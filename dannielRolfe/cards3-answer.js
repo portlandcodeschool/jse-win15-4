@@ -8,54 +8,45 @@ function makeCard(id) {
 
     // Otherwise build an instance object with an id property,
     // representing one card, and attach to it four methods:
-    makeCard.rank() {
-        return 
-    },
+    var newCard = {};
+        newCard.id = id;
+        newCard.rank = makeCard.rank;
+        newCard.suits = makeCard.suits;
+        newCard.color = makeCard.color;
+        newCard.cardName = makeCard.cardName;
 
-    makeCard.suit() {
-         return 
-    };
-    
-    makeCard.color() {
-        
-    };
-    
-    makeCard.cardName() {
-        
-    };
     // Each method property should be just a link to the corresponding method
     //  of the factory itself.
 
-    return makeCard;/* that instance here */;
-    }; //ends else 
-}
+    return makeCard;/* that instance here */
+    };
+}  
+
+makeCard.ranks = ['','Ace','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten',
+                'Jack','Queen','King'];
+makeCard.suits = ['','Hearts','Diamonds','Spades','Clubs'];
 
 //-----------------------------
 // Methods called though instances (where 'this' means the instance):
 //-----------------------------
 
 makeCard.rank = function() { // --> 1..13, NaN
-    this.isValid(id,0,51) && Math.floor(id/4)+1;
-    return this.rank(id);
+    return Math.floor((this.id/4) + 1);
 };
 
 makeCard.suit = function() { // --> 1..4, NaN
-    this.isValid(id,0,51) && (id%4)+1;
-    return this.suit(id);
+    return (this.id%4)+1;
 };
    
 makeCard.color = function() { // -->"red,"black",NaN
-    var suit = this.suit(id);
-    return suit && ((suit<3)? "red": "black");
+    return (this.suit(card) < 3)? "red": "black";
 };
 
 makeCard.cardName = function() { //--> string, NaN
     // This method can't have the key 'name' within the makeCard function,
     // but instance objects can store a reference to it called 'name'
 
-    var rank = this.rank(id);
-    var suit = this.suit(id);
-    return rank && suit && (this.rankNames[rank]+' of '+this.suitNames[suit]);
+    return rankNames[this.rank(card)]+' of '+suitNames[this.suit(card)];
 };
 
 
