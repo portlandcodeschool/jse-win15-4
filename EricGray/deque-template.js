@@ -76,11 +76,20 @@ makeDeque.cut = function() { //future -> helper function to decide even/odd/less
 	}
 	var late = [];
 	var early = [];
-	for (i = middle+1; i <= this.cardsInDeck.length; i++)
-		late.push(i);
-	for (i = this.cardsInDeck[0]; i <= middle; i++)
-		early.push(i);
+	console.log(late)
+	console.log(early)
+	console.log(middle);
+	console.log(this.cardsInDeck);
+	for (i = middle; i < this.cardsInDeck.length; i++)
+		late.push(this.cardsInDeck[i]);
+	for (i = 0; i < middle; i++)
+		early.push(this.cardsInDeck[i]);
 	this.cardsInDeck = [];
+	console.log(late);
+	console.log(early);
+	console.log(middle);
+	console.log(this.cardsInDeck);
+
 	for (i = 0; i <= late.length-1; i++)
 		this.cardsInDeck.push(late[i]);
 	for (i = 0; i <= early.length-1; i++)
@@ -108,7 +117,7 @@ makeDeque.sort = function(compareValsFn) {
 };
 
 //test variable
-var dequeOne = makeDeque([1, 2, 3, 4, 5, 6])
+var dequeOne = makeDeque([7, 8, 9, 10, 11, 12])
 
 // Feel free to write tests for your code!
 
