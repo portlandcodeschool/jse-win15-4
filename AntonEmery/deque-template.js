@@ -20,6 +20,7 @@ function makeDeque(values) { //input needs to be [1, 2, 3]
 	newDeque.push = makeDeque.push;
 	newDeque.shift = makeDeque.shift;
 	newDeque.unshift = makeDeque.unshift;
+	newDeque.cut = makeDeque.cut;
 
 	return newDeque;
 };
@@ -61,8 +62,11 @@ makeDeque.unshift = function(val) {
 }
 
 makeDeque.cut = function() {
-	//...
-}
+	//take the first half of the array
+	var firsthalf = this.array.splice(0, (this.array.length / 2));  //[1, 2]
+	//concat that with is left 
+	return this.array.concat(firsthalf);
+	}
 
 makeDeque.map = function(convertValFn) {
 	//...
@@ -74,5 +78,4 @@ makeDeque.sort = function(compareValsFn) {
 
 // Feel free to write tests for your code!
 
-var deck = [1, 2, 3, 4];
-deck.slice(0, deck1.length-1)
+var deck = makeDeque([1, 2, 3, 4]);
