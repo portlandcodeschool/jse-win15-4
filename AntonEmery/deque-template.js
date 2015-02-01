@@ -21,6 +21,7 @@ function makeDeque(values) { //input needs to be [1, 2, 3]
 	newDeque.shift = makeDeque.shift;
 	newDeque.unshift = makeDeque.unshift;
 	newDeque.cut = makeDeque.cut;
+	newDeque.sort = makeDeque.sort;
 
 	return newDeque;
 };
@@ -73,9 +74,18 @@ makeDeque.map = function(convertValFn) {
 }
 
 makeDeque.sort = function(compareValsFn) {
-	//...
+	this.array.sort(compareValsFn);
+	return this.array;
+}
+
+function compareValsFn(a, b) {
+	return (a > b) ? 1 : -1;
+}
+
+function convertValFn() {
+	
 }
 
 // Feel free to write tests for your code!
 
-var deck = makeDeque([1, 2, 3, 4, 5]);
+var deck = makeDeque([1, 4, 3, 6, 5]);
