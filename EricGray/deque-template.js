@@ -76,19 +76,11 @@ makeDeque.cut = function() { //future -> helper function to decide even/odd/less
 	}
 	var late = [];
 	var early = [];
-	console.log(late)
-	console.log(early)
-	console.log(middle);
-	console.log(this.cardsInDeck);
 	for (i = middle; i < this.cardsInDeck.length; i++)
 		late.push(this.cardsInDeck[i]);
 	for (i = 0; i < middle; i++)
 		early.push(this.cardsInDeck[i]);
 	this.cardsInDeck = [];
-	console.log(late);
-	console.log(early);
-	console.log(middle);
-	console.log(this.cardsInDeck);
 
 	for (i = 0; i <= late.length-1; i++)
 		this.cardsInDeck.push(late[i]);
@@ -106,13 +98,13 @@ makeDeque.cut = function() { //future -> helper function to decide even/odd/less
 
 makeDeque.map = function(convertValFn) {
 	//...
-	mappedArray = this.cardsInDeck.map(convertValFn);
+	var mappedArray = this.cardsInDeck.map(convertValFn);
 	return mappedArray;
 };
 
 makeDeque.sort = function(compareValsFn) {
 	//...
-	sortedArray = this.cardsInDeck.sort(compareValsFn);
+	var sortedArray = this.cardsInDeck.sort(compareValsFn);
 	return sortedArray;
 };
 

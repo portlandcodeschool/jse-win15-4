@@ -5,7 +5,7 @@
 
 // 2b:
 // make a deque instance to store a full deck of cards:
-var deckOfCards;// = makeDeque(makeCard.fullSet);
+var deckOfCards = makeDeque(makeCard.makeSet());
 
 
 deckOfCards.sort(/* ascending-by-suit comparison function here */);

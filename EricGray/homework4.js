@@ -10,30 +10,26 @@ var makeCard = function(id) {
 		newCard.suit = makeCard.suit;
 		newCard.color = makeCard.color;
 		newCard.cardName = makeCard.cardName;
+		newCard.convertRank = makeCard.convertRank;
+		newCard.convertSuit = makeCard.convertSuit;
 
 	return newCard;
 
 };
+		
+		makeCard.ranks = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", 
+						"Eight", "Nine", "Ten", "Jack", "Queen", "King"];
 
-		makeCard.ranks = {1: "Ace", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6:"Six",
-						7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten", 11: "Jack", 12: "Queen",
-						13: "King"};
-		/*makeCard.ranks = ["Ace ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", 
-						"Eight ", "Nine ", "Ten ", "Jack ", "Queen ", "King "];*/
-
-
-		makeCard.suits = {1: "Heart", 2: "Diamonds", 3: "Spades", 4: "Clubs"};
-
-		/* makeCard.suits = [" Hearts", " Diamonds", " Spades", " Clubs"]; */
+		 makeCard.suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 
 		makeCard.fullSet = []
 
 		makeCard.rank = function(){
-						return this.ranks[Math.floor((this.id/4) + 1)];
+						return Math.floor((this.id/4) + 1)
 		};
 
 		makeCard.suit = function(){
-						return this.suits[(this.id%4)+1];
+						return (this.id%4)+1;
 		}
 
 		makeCard.color = function(){
@@ -46,9 +42,9 @@ var makeCard = function(id) {
 					};
 
 		makeCard.cardName = function(){
-						var rankID = this.rank();
-						var suitID = this.suit();
-						var name = rankID  + " of " + suitID;
+						var rankID = this.rank()-1;
+						var suitID = this.suit()-1;
+						var name = this.ranks[rankID]  + " of " + this.suits[suitID];
 						return name;
 					};
 
@@ -63,8 +59,12 @@ var makeCard = function(id) {
 
 		makeCard.makeSet = function() {
 					for (i = 0; i<52; i++){
-					console.log(cardi = makeCard(i));
-					makeCard.fullSet.push(cardi);
+
+					card = makeCard(i);
+					makeCard.fullSet.push(card);
+
+					/*console.log(cardi = makeCard(i));
+					makeCard.fullSet.push(cardi); */
 
 			}
 
@@ -79,4 +79,23 @@ var card15 = makeCard(15);
 var card43 = makeCard(43);
 var card51 = makeCard(51);
 
-// Question 2 Stacking the Deck
+
+//Compare Functions
+
+function compare(a, b) {
+	if (a.suit() === b.suit()) {
+		 		function compare(a,b) {
+			if (a.rank() > b.rank()) {
+				return -1;
+			} else {
+				return 1;
+			}
+		} return 0 }else if (a.suit() > b.suit()) {
+			return -1;
+		} else {
+			return 1;
+		}
+	}
+
+
+
