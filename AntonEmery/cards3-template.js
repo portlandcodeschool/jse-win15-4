@@ -21,7 +21,6 @@ function makeCard(id) {
     newCard.suit = makeCard.suit;
     newCard.color = makeCard.color;
     newCard.cardName = makeCard.cardName;
-    newCard.fullDeck = makeCard.fullDeck;
 
 
 
@@ -107,11 +106,11 @@ makeCard.isCard = function(thing) { // --> true,false
 //---------------------
 // Additional factory properties
 //---------------------
-
+  
 makeCard.fullSet = [];
 
-
 makeCard.fullDeck = function() {   //<-- instead, generate array of 52 card instances
+
   for(i=0; i<52; i++) {
   this.fullSet.push(makeCard(i));
   }
@@ -120,8 +119,6 @@ makeCard.fullDeck = function() {   //<-- instead, generate array of 52 card inst
 };
 
 makeCard.fullDeck();
-
-
 //----------------------
 // Simple Testing suite
 // Supplement as needed!
