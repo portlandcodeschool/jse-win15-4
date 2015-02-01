@@ -21,7 +21,7 @@ function makeCard(id) {
     newCard.suit = makeCard.suit;
     newCard.color = makeCard.color;
     newCard.cardName = makeCard.cardName;
-
+    newCard.fullDeck = makeCard.fullDeck;
 
 
 
