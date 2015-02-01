@@ -21,8 +21,10 @@ alphabeticalSort = function(x,y) {
 	   else return 0;
 };
 
+
 deckOfCards.sort(ascendingSuit);
 deckOfCards.cut();
+console.log("For some reason when I call deckOfCards.cut() I wind up losing half of makeCard.fullset.  Other than that the cut method works perfectly, and when I tested the makeDeque.cut on other arrays I never ran in to the same problem. Any ideas what is causing this?");
 assert(deckOfCards.top().name() === 'King of Diamonds', 'Failed King of Diamonds test');
 
 deckOfCards.sort(alphabeticalSort);
@@ -31,8 +33,8 @@ assert(deckOfCards.top().name() === 'Two of Spades', 'Failed Two of Spades test'
 
 
 
-// 2c:
-// make a deque instance to store student names:
+//2c:
+//make a deque instance to store student names:
 var classList = ["Anton", "Eric", "Jahsie", "Kyle", "Tal", "Brigitta", "Greg", "Tupper", "Ondine", "Peter", "Todd", "Robert", "Dan", "Matt", "Tom", "Dallass"]
 // var deckOfNames = makeDeque(classList);
 
@@ -45,14 +47,15 @@ alphaClass = function(x,y) {
 
 var deckOfNames = makeDeque(classList);
 deckOfNames.sort(alphaClass);
-assert(deckOfNames.bottom() === "Dallass", 'Failed name test');// var theFinalName = '/*someone*/'; //whoever is last via that sort
+assert(deckOfNames.bottom() === "Dallass", 'Failed name test');
 assert(deckOfNames.top() === "Kyle", 'Failed name test');
 
 
+// 2d:
+// first add a deque.shuffle() method in your factory, then...
+var shuffledDeck = makeDeque(makeCard.fullSet);
 
-// // 2d:
-// // first add a deque.shuffle() method in your factory, then...
-// var shuffledDeck;// = makeDeque(makeCard.fullSet);
+
 
 // shuffledDeck.shuffle();
 // var ids = shuffledDeck.map( /* return-card-id function here */ );
