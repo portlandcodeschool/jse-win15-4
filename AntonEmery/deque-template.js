@@ -22,6 +22,7 @@ function makeDeque(values) { //input needs to be [1, 2, 3]
 	newDeque.unshift = makeDeque.unshift;
 	newDeque.cut = makeDeque.cut;
 	newDeque.sort = makeDeque.sort;
+	newDeque.map = makeDeque.map;
 
 	return newDeque;
 };
@@ -70,7 +71,11 @@ makeDeque.cut = function() {
 	}
 
 makeDeque.map = function(convertValFn) {
-	//...
+	var convertedDeck = [];
+	for(var i = 0; i < this.array.length; i++) {
+		convertedDeck.push(convertValFn(this.array[i]));
+		}
+		return convertedDeck;
 }
 
 makeDeque.sort = function(compareValsFn) {
@@ -82,8 +87,8 @@ function compareValsFn(a, b) {
 	return (a > b) ? 1 : -1;
 }
 
-function convertValFn() {
-	
+function convertValFn(val) {
+	return val + 2;
 }
 
 // Feel free to write tests for your code!
