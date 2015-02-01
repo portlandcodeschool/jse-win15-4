@@ -63,7 +63,7 @@ makeDeque.unshift = function(val) {
 
 makeDeque.cut = function() {
 	//take the first half of the array
-	var firsthalf = this.array.splice(0, (this.array.length / 2));  //[1, 2]
+	var firsthalf = this.array.splice(0, (Math.ceil(this.array.length / 2)));  
 	//concat that with is left 
 	return this.array.concat(firsthalf);
 	}
@@ -78,4 +78,4 @@ makeDeque.sort = function(compareValsFn) {
 
 // Feel free to write tests for your code!
 
-var deck = makeDeque([1, 2, 3, 4]);
+var deck = makeDeque([1, 2, 3, 4, 5]);
