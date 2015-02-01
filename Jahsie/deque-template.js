@@ -65,20 +65,36 @@ makeDeque.cut = function() {
 
 };
 
-makeDeque.map = function(convertValFn) {
+makeDeque.convertValFn = function(val) {
 
 };
+
+makeDeque.map = function(convertValFn) {
+	mappedArray = this.array.map(convertValFn);
+	return mappedArray;
+};
+
+// compareValsFn = function(x,y) {	
+//  	return x - y;
+// };
 
 makeDeque.sort = function(compareValsFn) {
-	//...
+	sortedArray = this.array.sort(compareValsFn);
+	return sortedArray;
 };
+
+
 
 // Feel free to write tests for your code!
 var testResults = makeDeque(test);
 
-function assert(claim,message) {
-    if (!claim) console.error(message);
-}
+ascendingSuit = function() {
+	theDeck = this.array;
+	console.log(theDeck);
+};
+// function assert(claim,message) {
+//     if (!claim) console.error(message);
+// };
 
-console.log(testResults.array);
-assert(testResults.cut()==[ 5, 6, 7, 1, 2, 3, 4 ], "test 1 failed")
+// console.log(testResults.array);
+// assert(testResults.cut()==[ 5, 6, 7, 1, 2, 3, 4 ], "test 1 failed")

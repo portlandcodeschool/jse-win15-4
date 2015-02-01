@@ -85,11 +85,21 @@ var card12 = makeCard(12);
 // Methods to be called through factory only:
 //-----------------------
 
-makeCard.isCard = function(thing) { // --> true,false
+makeCard.isCard = function(obj) { // --> true,false
     // if (thing > 51 || thing < 0 || !(Number.isInteger(thing)) || !(typeof thing == 'number')) {
     //     return false;
     // }
     // else return true;
+    var theTester = obj;
+    // if (!(theTester.rank typeof == 'function')) {
+    //     return false;
+    // } else { 
+    //     var theTesterRank = theTester.rank();
+        if (!(/*13 >= theTesterRank >= 0|| */51 >= theTester.id >= 0) || (!(theTester.color()))) {
+        return false;
+    } else {
+        return true;
+    }
     
 };
 
@@ -103,8 +113,16 @@ makeCard.fullSet = [];
 
 makeCard.makeFullSet = function() {
     for (i = 0; i < 52; i++) {
+        //var theNewCard = "card" + i; 
+        //theNewCard = makeCard(i);
+        //var theNewCard = makeCard(i);
+        //makeCard.fullSet[i] = theNewCard;
+        //I based this of the work we did last week where we were adding new people objects to the people.index object.
         makeCard.fullSet.push(makeCard(i));
+        //console.log(makeCard(i));
     }
+    console.log("For this problem I spent a long time trying to give each card a name so that when I check makeCard.fullset I would see a list of objects named card1, card2 etc. After many attempts (see the stuff I commented out) I came to the conclusion that this isn't possible. Am I right in my conclusion? It seems that an array of objects will always look like this: array = [object, object]. Even if the objects have names they will still appear as 'object' when viewed in the array.");
+    return makeCard.fullSet;
 };
 
 makeCard.makeFullSet();

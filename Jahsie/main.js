@@ -5,14 +5,27 @@
 
 // 2b:
 // make a deque instance to store a full deck of cards:
-var deckOfCards;// = makeDeque(makeCard.fullSet);
+var deckOfCards = makeDeque(makeCard.fullSet);
 
+ascendingSuit = function(x,y) {
+    var n = y.suit() - x.suit();
+    if (n !== 0) {
+        return n;
+     }
+     return y.rank() - x.rank();
+      };
 
-deckOfCards.sort(/* ascending-by-suit comparison function here */);
+alphabeticalSort = function(x,y) {
+	if (x.name() > y.name()) return -1;
+	   else if (x.name() < y.name()) return 1;
+	   else return 0;
+};
+
+deckOfCards.sort(ascendingSuit);
 deckOfCards.cut();
 assert(deckOfCards.top().name() === 'King of Diamonds', 'Failed King of Diamonds test');
 
-deckOfCards.sort(/* alphabetic comparison function */);
+deckOfCards.sort(alphabeticalSort);
 assert(deckOfCards.bottom().name() === 'Ace of Clubs', 'Failed Ace of Clubs test');
 assert(deckOfCards.top().name() === 'Two of Spades', 'Failed Two of Spades test');
 
@@ -20,23 +33,31 @@ assert(deckOfCards.top().name() === 'Two of Spades', 'Failed Two of Spades test'
 
 // 2c:
 // make a deque instance to store student names:
-var deckOfNames;// = makeDeque( 17 names );
+var classList = ["Anton", "Eric", "Jahsie", "Kyle", "Tal", "Brigitta", "Greg", "Tupper", "Ondine", "Peter", "Todd", "Robert", "Dan", "Matt", "Tom", "Dallass"]
+// var deckOfNames = makeDeque(classList);
 
-var deckOfNames = makeDeque(/* 17 names */);
-deckOfName.sort(/*something*/);
-var theFinalName = '/*someone*/'; //whoever is last via that sort
-assert(everyone.top() === theFinalName, 'Failed name test');
+alphaClass = function(x,y) {
+	if (x.charAt(1) > y.charAt(1)) return -1;
+   else if (x.charAt(1) < y.charAt(1)) return 1;
+   else return 0;
+}
+
+
+var deckOfNames = makeDeque(classList);
+deckOfNames.sort(alphaClass);
+assert(deckOfNames.bottom() === "Dallass", 'Failed name test');// var theFinalName = '/*someone*/'; //whoever is last via that sort
+assert(deckOfNames.top() === "Kyle", 'Failed name test');
 
 
 
-// 2d:
-// first add a deque.shuffle() method in your factory, then...
-var shuffledDeck;// = makeDeque(makeCard.fullSet);
+// // 2d:
+// // first add a deque.shuffle() method in your factory, then...
+// var shuffledDeck;// = makeDeque(makeCard.fullSet);
 
-shuffledDeck.shuffle();
-var ids = shuffledDeck.map( /* return-card-id function here */ );
-console.log(ids);
-var names = shuffledDeck.map( /* return-card-name function here */ );
-console.log(names);
+// shuffledDeck.shuffle();
+// var ids = shuffledDeck.map( /* return-card-id function here */ );
+// console.log(ids);
+// var names = shuffledDeck.map( /* return-card-name function here */ );
+// console.log(names);
 
 
