@@ -1,4 +1,4 @@
-function makeCard(id) {
+ function makeCard(id) {
 	
 	if (!(Number.isInteger(id)) || id < 0 || id > 51 ) {
         return null;
@@ -9,7 +9,7 @@ function makeCard(id) {
 		rank : makeCard.rank,
 		suit : makeCard.suit,
 		color : makeCard.color,
-		cardName : makeCard.cardName,
+		name : makeCard.cardName
 	  }
   
   return card
@@ -31,15 +31,12 @@ makeCard.rank = function() { // --> 1..13, NaN
 };
 
 makeCard.suit = function() { // --> 1..4, NaN
+  
    return (this.id%4)+1
 };
    
 makeCard.color = function() { // -->"red,"black",NaN
-     if(this.suit(this.id) <= 2) {
-        return 'red'
-    } else {
-        return 'black'
-    }
+  return (this.suit(this.id) < 3)? "red": "black"
 };
 
 makeCard.cardName = function() { //--> string, NaN
@@ -51,7 +48,7 @@ makeCard.cardName = function() { //--> string, NaN
       var suitNames = ['','Hearts','Diamonds','Spade','Clubs'];
 	  
 
-      return rankNames[this.rank()] + ' of ' + suitNames[this.suit()];
+      return rankNames[this.rank(this.id)] + ' of ' + suitNames[this.suit(this.id)];
 
 };
 
@@ -62,20 +59,20 @@ makeCard.cardName = function() { //--> string, NaN
 
 makeCard.isCard = function(id) { // --> true,false
     // return true if thing is a valid card instance made by this factory
-	if (	
-    makeCard(id) == null){
-    	return false
+	if (Number.isInteger(id) && id >= 0 && id < 52 )
+	 {
+    	return true;
   }
-  		return true
 }
+
 
 //---------------------
 // Additional factory properties
 //---------------------
 
 makeCard.fullSet = []; //<-- instead, generate array of 52 card instances
-for (var i = 0; i <= 51; i++){
-	makeCard.fullSet[i] = makeCard[i]
+for (var i = 0; i < 52; i++){
+	makeCard.fullSet.push(makeCard(i));
 }
 
 
@@ -135,4 +132,8 @@ assert(card0.name === card3.name, "Test 53 failed");
 //etc...
 
 
-
+console.log("Test for rank, suit, color and name all pass, need help figuring out why my isCard is failing" )
+console.log(card51.rank());
+console.log(card51.suit());
+console.log(card51.color());
+console.log(card51.name());

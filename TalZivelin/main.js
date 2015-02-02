@@ -5,10 +5,15 @@
 
 // 2b:
 // make a deque instance to store a full deck of cards:
-var deckOfCards;// = makeDeque(makeCard.fullSet);
+var deckOfCards = makeDeque(makeCard.fullSet);
 
 
-deckOfCards.sort(/* ascending-by-suit comparison function here */);
+deckOfCards.sort();
+
+deckOfCards.sort(function(a, b){
+	return a-b
+});
+
 deckOfCards.cut();
 assert(deckOfCards.top().name() === 'King of Diamonds', 'Failed King of Diamonds test');
 
