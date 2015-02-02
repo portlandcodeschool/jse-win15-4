@@ -7,8 +7,11 @@
 // make a deque instance to store a full deck of cards:
 var deckOfCards = makeDeque(makeCard.fullDeck());  //had to change .fullSet to .fullDeck())
 
+deckOfCards.sort(function() {
+	
+});
 
-deckOfCards.sort(/* ascending-by-suit comparison function here */);
+
 deckOfCards.cut();
 assert(deckOfCards.top().name() === 'King of Diamonds', 'Failed King of Diamonds test');
 

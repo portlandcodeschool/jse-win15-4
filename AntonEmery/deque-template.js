@@ -93,4 +93,4 @@ function convertValFn(val) {
 
 // Feel free to write tests for your code!
 
-//var deck = makeDeque([1, 4, 3, 6, 5]);  //test deck for cut function
+var deck = makeDeque([1, 4, 3, 6, 5]);  //test deck for cut function
