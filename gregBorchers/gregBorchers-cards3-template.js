@@ -85,12 +85,12 @@ cardFactory.printFullSet = function(fullSet)
 {
 	// verbose output
 	// TODO add some error checking
-	console.log("< ******  --> START of call to cardFactory.makeFullSet() **** ");
-	console.log("A new deck is born **** >");	
+	//console.log("< ******  --> START of call to cardFactory.makeFullSet() **** ");
+	console.log("Here is the deck **** >");	
 	for (var i = 0; i < fullSet.length; i++) {
 		console.log("Card ID="+ i + " name() returned: " + fullSet[i].name());
 	}
-	console.log("********* --> END of call to cardFactory.makeFullSet() **** >");
+	//console.log("********* --> END of call to cardFactory.makeFullSet() **** >");
 }
 
 
@@ -116,6 +116,27 @@ cardFactory.isCard = function(cardObj) {
 		isACard = false;
 	};
 	return isACard;
+};
+
+//-----------------------
+// SortFn Methods to be called through function sort(sortFn) only:
+//-----------------------
+
+cardSortBySuitAscendingFn = function(a,b) {
+    if ((typeof a ===  typeof b) &&
+        (typeof b  === 'object')) {  // only allow sort comparisons for cards //TODO is there an isCard test?
+        
+        var isGreater = 0;  // equal
+        if ( a.suit() > b.suit() ) {
+            isGreater = 1; 
+        } else if ( b.suit() > a.suit() ) {
+            isGreater = -1;
+        }
+        return isGreater;
+    }
+    debugger;
+    return null; // a & b were not comparable for sorting purposes
+    //TODO look at the alternative from MDN which is just "return a - b;" to see how that works for strings.
 };
 
 
