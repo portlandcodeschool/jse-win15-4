@@ -66,12 +66,11 @@ assert(deckOfNames.top() === theFinalName, 'Failed name test');
 
 // // 2d:
 // // first add a deque.shuffle() method in your factory, then...
-// var shuffledDeck;// = makeDeque(makeCard.fullSet);
-
-// shuffledDeck.shuffle();
-// var ids = shuffledDeck.map( /* return-card-id function here */ );
-// console.log(ids);
-// var names = shuffledDeck.map( /* return-card-name function here */ );
-// console.log(names);
+var shuffledDeck = makeDeque(makeCard.fullSet);
+shuffledDeck.shuffle();
+var ids = shuffledDeck.map(function (x) { return x.id; });
+console.log(ids);
+var names = shuffledDeck.map(function (x) { return x.name(); });
+console.log(names);
 
 

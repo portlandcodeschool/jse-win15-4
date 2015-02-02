@@ -16,7 +16,8 @@ function makeDeque(values) {
 		unshift: makeDeque.unshift,
 		cut: makeDeque.cut,
 		map: makeDeque.map,
-		sort: makeDeque.sort
+		sort: makeDeque.sort,
+		shuffle: makeDeque.shuffle
 	};
 
 	return deque; 
@@ -76,6 +77,24 @@ makeDeque.map = function(convertValFn) {
 
 makeDeque.sort = function(compareValsFn){
 	this.values.sort(compareValsFn);
+}
+
+makeDeque.shuffle = function() {
+  var m = this.values.length, t, i;
+
+  // While there remain elements to shuffle…
+  while (m) {
+
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
+
+    // And swap it with the current element.
+    t = this.values[m];
+    this.values[m] = this.values[i];
+    this.values[i] = t;
+  }
+
+  return this.values;	
 }
 
 // Feel free to write tests for your code!
