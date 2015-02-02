@@ -107,10 +107,10 @@ makeCard.isCard = function(thing) { // --> true,false
 // Additional factory properties
 //---------------------
   
-makeCard.fullSet = [];
+
 
 makeCard.fullDeck = function() {   //<-- instead, generate array of 52 card instances
-
+  makeCard.fullSet = [];
   for(i=0; i<52; i++) {
   this.fullSet.push(makeCard(i));
   }
