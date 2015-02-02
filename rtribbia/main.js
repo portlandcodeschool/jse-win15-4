@@ -48,13 +48,20 @@ assert(deckOfCards.top().name() === 'Two of Spades', 'Failed Two of Spades test'
 
 // // 2c:
 // // make a deque instance to store student names:
-// var deckOfNames;// = makeDeque( 17 names );
-
-// var deckOfNames = makeDeque( 17 names );
-// deckOfName.sort(/*something*/);
-// var theFinalName = '/*someone*/'; //whoever is last via that sort
-// assert(everyone.top() === theFinalName, 'Failed name test');
-
+function nameSort(a,b) {
+	if (a[1] > b[1]) {
+		return 1;
+	} else if (b[1] > a[1]) {
+		return -1;
+	} else {
+		return 0;
+	}
+}
+var names = ["Kyle","Jackie","Jamison","Julius","Stanley","Scot","Orville","Michael","Wilmer","Denice","Izetta","Zulema","Tanya","Regenia","Della","Lue","Kandra"]
+var deckOfNames = makeDeque(names);
+deckOfNames.sort(nameSort);
+var theFinalName = 'Izetta'; //whoever is last via that sort
+assert(deckOfNames.top() === theFinalName, 'Failed name test');
 
 
 // // 2d:
