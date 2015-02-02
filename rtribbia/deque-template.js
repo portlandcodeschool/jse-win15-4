@@ -17,7 +17,9 @@ function makeDeque(values) {
 		cut: makeDeque.cut,
 		map: makeDeque.map,
 		sort: makeDeque.sort,
-		shuffle: makeDeque.shuffle
+		shuffle: makeDeque.shuffle,
+		isDiscarded: makeDeque.isDiscarded,
+		discarded: []
 	};
 
 	return deque; 
@@ -41,22 +43,32 @@ makeDeque.bottom = function() {
 
 makeDeque.pop = function() {
 	//...
+	this.discarded.push(this.values[this.values.length-1]);
 	return this.values.pop();
 }
 
 makeDeque.push = function(val) {
 	//...
-	return this.values.push(val);
+	if (this.isDiscarded(val)) {
+		return this.values.push(val);
+	} else {
+		return null;
+	}
 }
 
 makeDeque.shift = function() {
 	//...
+	this.discarded.push(this.values[0]);
 	return this.values.shift();
 }
 
 makeDeque.unshift = function(val) {
 	//...
-	return this.values.unshift(val);
+	if (this.isDiscarded(val)) {
+		return this.values.unshift(val);
+	} else {
+		return null;
+	}
 }
 
 makeDeque.cut = function() {
@@ -96,7 +108,11 @@ makeDeque.shuffle = function() {
 
   return this.values;	
 }
-
+makeDeque.isDiscarded = function(val) {
+	var v;
+	(this.discarded.indexOf(val) == -1)?(v = false):(v = true);
+	return v;
+}
 // Feel free to write tests for your code!
 
 var vals = "abcdefghijklmnopqrstuvwxyz".split("");
