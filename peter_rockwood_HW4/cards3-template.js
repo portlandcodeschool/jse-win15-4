@@ -84,7 +84,11 @@ for(var i = 0; i < 52; i++){
 // Supplement as needed!
 
 function assert(claim,message) {
-    if (!claim) console.error(message);
+    if (!claim) {
+        console.error(message);
+        return false
+    }
+    return true
 }
 
 // card instances needed for assertions:

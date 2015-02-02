@@ -72,22 +72,24 @@ var deckOfNames = makeDeque(['Ondine Gallatin',
                 			 'Todd Redmond']);
 
 function compAlphaScndLtr(a,b){
-	a = a.slice(1)
-	b = b.slice(1)
+	a = a.slice(1);
+	b = b.slice(1);
 	if(a > b){
 		return 1
 	} else if (a < b) {
 		return -1
 	}
-}
+};
 deckOfNames.sort(compAlphaScndLtr);
 
 var theFinalName = 'Kyle Houston'; //whoever is last via that sort
-assert(deckOfNames.top() === theFinalName, 'Failed name test');
+if(assert(deckOfNames.top() === theFinalName, 'Failed name test') === true){
+	console.log('2c: test passed');
+};
 
-// for(var i = 0; i < deckOfNames.deque.length; i++){
-// 	console.log(deckOfNames.deque[i][1] + deckOfNames.deque[i][2], deckOfNames.deque[i])
-// }
+for(var i = 0; i < deckOfNames.deque.length; i++){
+	console.log(deckOfNames.deque[i][1] + deckOfNames.deque[i][2], deckOfNames.deque[i])
+};
 
  // 2d:
 // first add a deque.shuffle() method in your factory, then...

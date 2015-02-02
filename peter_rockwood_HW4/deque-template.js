@@ -64,7 +64,7 @@ makeDeque.pop = function() {
 
 makeDeque.push = function(val) {
 	if(this.badInput(val) === true){
-		return
+		return undefined
 	}
 	return this.deque.push(val)
 }
@@ -76,6 +76,9 @@ makeDeque.shift = function() {
 
 
 makeDeque.unshift = function(val) {
+	if(this.badInput(val) === true){
+		return undefined
+	}
 	return this.deque.unshift(val);
 }
 
@@ -124,10 +127,26 @@ makeDeque.addToDiscardPile = function(itemToAdd){
 	return
 };
 
-// Feel free to write tests for your code!
-/*
-deckOfCards.pop()
-discardPile
-deckOfCards.shift()
-discardPile
-*/
+var deckOfCards = makeDeque(makeCard.fullSet);
+
+function dequeTests() {
+//Length test	
+if(assert(deckOfCards.length()===52,  "wrong length") === false) return;
+
+//pop, push, top test
+var last = deckOfCards.top();
+if(! deckOfCards.pop() === last) return;
+if(assert(deckOfCards.push(last) === undefined,
+  "bad pop, push, or top") === false) return;
+
+//shift, unshift, bottom test
+var first = deckOfCards.bottom();
+if(! deckOfCards.shift() === first) return;
+if(assert(deckOfCards.unshift(first) === undefined,  
+	"bad shift, unshift or bottom")=== false) return;
+
+
+console.log('pop, push, shift, unshift, top, bottom, replacement/duplicate tests passed')
+}
+
+dequeTests();
