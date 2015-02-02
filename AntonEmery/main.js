@@ -7,6 +7,8 @@
 // make a deque instance to store a full deck of cards:
 var deckOfCards = makeDeque(makeCard.fullDeck());  //had to change .fullSet to .fullDeck())
 
+//to reference a card after deck has been created.  deckOfCards.array[0].cardName();
+
 deckOfCards.sort(function() {
 	
 });

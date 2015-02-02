@@ -10,7 +10,7 @@ function makeDeque(values) { //input needs to be [1, 2, 3]
 		// everytime makeDeque is called	add the values parameter to the array
 
 		var newDeque = {
-		array: values
+		array: values.slice(0)
 		};
 
 	newDeque.length2 = makeDeque.length2;
