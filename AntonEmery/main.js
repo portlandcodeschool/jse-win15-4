@@ -32,7 +32,8 @@ function compareSuite(a, b) {
 deckOfCards.sort(compareSuite);
 
 
-deckOfCards.cut();
+//deckOfCards.cut();
+
 assert(deckOfCards.top().cardName() === 'King of Diamonds', 'Failed King of Diamonds test');
 
 deckOfCards.sort(/* alphabetic comparison function */);
@@ -41,25 +42,25 @@ assert(deckOfCards.top().cardName() === 'Two of Spades', 'Failed Two of Spades t
 
 
 
-// 2c:
-// make a deque instance to store student names:
-var deckOfNames;// = makeDeque( 17 names );
+// // 2c:
+// // make a deque instance to store student names:
+// var deckOfNames;// = makeDeque( 17 names );
 
-var deckOfNames = makeDeque(/* 17 names */);
-deckOfName.sort(/*something*/);
-var theFinalName = '/*someone*/'; //whoever is last via that sort
-assert(everyone.top() === theFinalName, 'Failed name test');
+// var deckOfNames = makeDeque(/* 17 names */);
+// deckOfName.sort(/*something*/);
+// var theFinalName = '/*someone*/'; //whoever is last via that sort
+// assert(everyone.top() === theFinalName, 'Failed name test');
 
 
 
-// 2d:
-// first add a deque.shuffle() method in your factory, then...
-var shuffledDeck;// = makeDeque(makeCard.fullSet);
+// // 2d:
+// // first add a deque.shuffle() method in your factory, then...
+// var shuffledDeck;// = makeDeque(makeCard.fullSet);
 
-shuffledDeck.shuffle();
-var ids = shuffledDeck.map( /* return-card-id function here */ );
-console.log(ids);
-var names = shuffledDeck.map( /* return-card-name function here */ );
-console.log(names);
+// shuffledDeck.shuffle();
+// var ids = shuffledDeck.map( /* return-card-id function here */ );
+// console.log(ids);
+// var names = shuffledDeck.map( /* return-card-name function here */ );
+// console.log(names);
 
 
