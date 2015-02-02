@@ -25,7 +25,7 @@ function cardFactory() {
 };
 
 //-----------------------------
-// Methods called though instances (where 'this' means the instance):
+// Methods called though instances (where 'this' means the card instance):
 //-----------------------------
 
 cardFactory.rank = function() { // --> 1..13, NaN
