@@ -15,6 +15,8 @@ function makeDeque(values) {
 		cut: makeDeque.cut,
 		map: makeDeque.map,
 		sort: makeDeque.sort,
+		badShuffle: makeDeque.badShuffle,
+		shuffle: makeDeque.shuffle,
 	}
 	// return an instance object
 	return newDeque;
@@ -67,21 +69,25 @@ makeDeque.cut = function() {
 	return this.arr;
 }
 
-makeDeque.map = function() {
+makeDeque.map = function(convertValFn) {
 	return this.arr.map(convertValFn);
 }
 
-makeDeque.sort = function() {
+makeDeque.sort = function(compareValsFn) {
 	return this.arr.sort(compareValsFn);
 }
 
-function compareValsFn(a,b) {
-	return b - a;
+makeDeque.badShuffle = function(shuffleFn) {
+	return this.arr.sort(shuffleFn);
 }
 
-function convertValFn(val) {
-	return val * 2;
+makeDeque.shuffle = function(shuffleFn) {
+	return this.arr.sort(shuffleFn);
 }
+
+// function convertValFn(val) {
+// 	return val * 2;
+// }
 
 // Feel free to write tests for your code!
 var x = [1, 2, 3, 4, 5, 6, 7];
