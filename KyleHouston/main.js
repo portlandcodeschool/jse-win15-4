@@ -58,7 +58,6 @@ shuffledDeck.badShuffle(function() {
 
 var shuffledDeck2 = makeDeque(makeCard.fullSet);
 
-console.log(shuffledDeck2.arr[1]);
 
 shuffledDeck2.shuffle(function() {
 	var m = shuffledDeck2.arr.length, t, i;
@@ -69,14 +68,18 @@ shuffledDeck2.shuffle(function() {
 		shuffledDeck2.arr[m] = shuffledDeck2.arr[i];
 		shuffledDeck2.arr[i] = t;
 	}
-	//This code shuffle code was adapted from http://bost.ocks.org/mike/shuffle/
+	//This source code: http://bost.ocks.org/mike/shuffle/
 });
 
-console.log(shuffledDeck2.arr[1]);
 
-// var ids = shuffledDeck.map( /* return-card-id function here */ );
-// console.log(ids);
-// var names = shuffledDeck.map( /* return-card-name function here */ );
-//console.log(names);
+var ids = shuffledDeck2.map( function(a) {
+	return a.id;
+});
+console.log(ids);
+
+var names = shuffledDeck.map( function(a) {
+	return	a.name();
+});
+console.log(names);
 
 
