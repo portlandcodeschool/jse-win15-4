@@ -59,7 +59,7 @@ makeCard.cardName = function() { //--> string, NaN
 
 makeCard.isCard = function(id) { // --> true,false
     // return true if thing is a valid card instance made by this factory
-	if (Number.isInteger(id) && id >= 0 && id < 52 )
+	if (id.name == makeCard.cardName)
 	 {
     	return true;
   }
@@ -132,8 +132,8 @@ assert(card0.name === card3.name, "Test 53 failed");
 //etc...
 
 
-console.log("Test for rank, suit, color and name all pass, need help figuring out why my isCard is failing" )
-console.log(card51.rank());
-console.log(card51.suit());
-console.log(card51.color());
-console.log(card51.name());
+console.log("Test for rank, suit, color and name all pass" )
+console.log("result for rank " + card51.rank());
+console.log("result for suit " +  card51.suit());
+console.log("result for color " +  card51.color());
+console.log("result for name " +  card51.name());

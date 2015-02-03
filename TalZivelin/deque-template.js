@@ -71,18 +71,17 @@ makeDeque.cut = function() {
 		
 	}
 	
-	
 	this.arr = secondHalf.concat(firstHalf);
 	return this.arr;
 }
 
-/*makeDeque.map = function(convertValFn) {
+makeDeque.map = function(convertValFn) {
 	return this.arr.map()
 }
 
 makeDeque.sort = function(compareValsFn) {
 	return this.arr.sort()
-}*/
+}
 
 // Feel free to write tests for your code!
 
