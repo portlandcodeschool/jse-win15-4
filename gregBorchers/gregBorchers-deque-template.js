@@ -27,15 +27,16 @@ function dequeFactory() {
         theNewDeque.qLength = 0;
 
         // **** function properties of each deque
-		theNewDeque.top    = dequeFactory.top; 
-		theNewDeque.bottom = dequeFactory.bottom; 
-		theNewDeque.pop    = dequeFactory.pop; 
-		theNewDeque.push   = dequeFactory.push;
-		theNewDeque.shift  = dequeFactory.shift;
-		theNewDeque.unshift= dequeFactory.unshift;
-		theNewDeque.cut    = dequeFactory.cut;
-		theNewDeque.map    = dequeFactory.map;
-		theNewDeque.sort   = dequeFactory.sort;
+		theNewDeque.top     = dequeFactory.top; 
+		theNewDeque.bottom  = dequeFactory.bottom; 
+		theNewDeque.pop     = dequeFactory.pop; 
+		theNewDeque.push    = dequeFactory.push;
+		theNewDeque.shift   = dequeFactory.shift;
+		theNewDeque.unshift = dequeFactory.unshift;
+		theNewDeque.cut     = dequeFactory.cut;
+		theNewDeque.map     = dequeFactory.map;
+		theNewDeque.sort    = dequeFactory.sort;
+        theNewDeque.shuffle = dequeFactory.shuffle;
 
 	    if ( dequeFactory.isValidInputList(values) ) { 
 			
@@ -74,7 +75,8 @@ dequeFactory.pop = function() {
 
 //----------------------------------------------------- push
 dequeFactory.push = function(val) {
-	if (typeof val !== 'undefined') {  // don't push undefined stuff
+	if ((typeof val !== 'undefined')) //&& (val in this.popHistory)
+     {  // don't push undefined stuff
         this.qLength++;
         return this.deque.push(val);   
     } else {
@@ -93,7 +95,8 @@ dequeFactory.shift = function() {
 
 //----------------------------------------------------- unshift
 dequeFactory.unshift = function(val) {
-	if (typeof val  !== 'undefined') {  // don't unshift undefined stuff
+	if (typeof val  !== 'undefined') // && //&& (val in this.shiftHistory)
+    {  // don't unshift undefined stuff
         this.qLength++;
         return this.deque.unshift(val);   
     } else {
@@ -127,6 +130,32 @@ dequeFactory.cut = function() {
         
     } else {
         return;  // cut causes no changes for deque length of 0 or 1.
+    }
+};
+
+//----------------------------------------------------- shuffle
+dequeFactory.shuffle = function() {
+    // shuffles using STOLEN CODE from http://bost.ocks.org/mike/shuffle/
+    if (this.deque.length >1 ) {
+        // shuffle hapens only for length 2 or greater
+        var copy = [];
+        n = this.deque.length;              
+        var i = 0;              
+                
+        // While there remain elements to shuffle…              
+        while (n) {             
+                
+            // Pick a remaining element…                
+            i = Math.floor(Math.random() * n--);                
+                
+            // And move it to the new array.                
+            copy.push(this.deque.splice(i, 1)[0]);               
+        } // end while(shuffling down the array length)             
+                
+        this.deque = copy;  // the shuffled copy is now the new deque               
+
+      } else {
+        return;  // shuffle causes no changes for deque length of 0 or 1.
     }
 };
 
