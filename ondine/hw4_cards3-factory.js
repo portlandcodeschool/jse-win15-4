@@ -3,29 +3,26 @@ var suitName = ["", "Hearts", "Diamonds", "Spades", "Clubs"];
 
 function makeCard(id) {
 
-  if (makeCard.isValid(id)) {
+  if (!makeCard.isValid(id))
+    return null;
 
-  newCard = {
-    cardId: id,
+  var card = {
+    id: id,
     rank: makeCard.rank,
     suit: makeCard.suit,
     color: makeCard.color,
-    name: makeCard.cardName,
-  }
-  return newCard
-  }
-};
+    name: makeCard.cardName
+  };
+  return card;
+}
 
 makeCard.isValid = function(id) {
-  if (typeof id != 'number') {
-    return NaN;
-  }
-  if ((id%1) !== 0) {
-    return NaN;
-  }
-  if (id < 0 || id > 51) {
-    return NaN;
-  }
+  if (typeof id != 'number')
+    return null;
+  if (id%1 !== 0)
+    return null;
+  if (id < 0 || id > 51)
+    return null;
   return true;
 };
 
@@ -34,16 +31,16 @@ makeCard.isValid = function(id) {
 //-----------------------------
 
 makeCard.rank = function() { // --> 1..13, NaN
-    return Math.floor(this.cardId/4) + 1;
+  return Math.floor(this.id/4) + 1;
 };
 
 makeCard.suit = function() { // --> 1..4, NaN
-        return (this.cardId%4) + 1;
+  return (this.id%4) + 1;
 };
    
 makeCard.color = function() { // -->"red,"black",NaN
-    var suitColor = this.suit.cardId;
-    return (suitColor < 3) ? "red": "black";
+  var suitColor = this.suit();
+  return (suitColor < 3) ? "red" : "black";
 };
 
 makeCard.cardName = function() { //--> string, NaN
@@ -54,17 +51,20 @@ makeCard.cardName = function() { //--> string, NaN
     return rankName[rank] + " of " + suitName[suit];
 };
 
+/* instance for testing */
 var card1 = makeCard(0);
-console.log(card1);
+console.log(card1); // card1.name() etc
 
 //-----------------------
 // Methods to be called through factory only:
 //-----------------------
 
-makeCard.isCard = function(thing) { // --> true,false
+makeCard.isCard = function(card) { // --> true,false
     // return true if thing is a valid card instance made by this factory
-
+  return (typeof card === 'object' ? true : false);
 };
+
+console.log("Test 24 fails. Is it an object but not an instance?");
 
 //---------------------
 // Additional factory properties
@@ -72,11 +72,14 @@ makeCard.isCard = function(thing) { // --> true,false
 
 makeCard.fullSet = []; //<-- instead, generate array of 52 card instances
 
-
+for (var i = 0; i < 52; ++i) {
+  makeCard.fullSet.push(
+    makeCard(i));
+}
 
 //----------------------
 // Simple Testing suite
-// Supplement as needed!
+// Supplement as needed!make
 
 function assert(claim,message) {
     if (!claim) console.error(message);
@@ -128,6 +131,3 @@ assert(card0.rank === card3.rank, "Test 51 failed");
 assert(card0.suit === card3.suit, "Test 52 failed");
 assert(card0.name === card3.name, "Test 53 failed");
 //etc...
-
-
-
