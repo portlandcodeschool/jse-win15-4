@@ -44,66 +44,14 @@ makeCard.color = function() { // -->"red,"black",NaN
 makeCard.cardName = function() { //--> string, NaN
     // This method can't have the key 'name' within the makeCard function,
     // but instance objects can store a reference to it called 'name'
-    var rankText;
-    var suitText;
+    var rankText = [
+        "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"
+    ];
+    var suitText = [
+        "Hearts", "Diamonds", "Spades", "Clubs"
+    ];
 
-    switch(this.rank(this.id)) {
-        case 1:
-            rankText = "Ace";
-            break;
-        case 2:
-            rankText = "Two";
-            break;
-        case 3:
-            rankText = "Three";
-            break;
-        case 4:
-            rankText = "Four";
-            break;
-        case 5:
-            rankText = "Five";
-            break;
-        case 6:
-            rankText = "Six";
-            break;
-        case 7:
-            rankText = "Seven";
-            break;
-        case 8:
-            rankText = "Eight";
-            break;
-        case 9:
-            rankText = "Nine";
-            break;
-        case 10:
-            rankText = "Ten";
-            break;
-        case 11:
-            rankText = "Jack";
-            break;
-        case 12:
-            rankText = "Queen";
-            break;
-        case 13:
-            rankText = "King";
-            break;
-    }
-
-    switch(this.suit(this.id)) {
-        case 1:
-            suitText = "Hearts";
-            break;
-        case 2:
-            suitText = "Diamonds";
-            break;
-        case 3:
-            suitText = "Spades";
-            break;
-        case 4:
-            suitText = "Clubs";
-            break;
-    }
-    return rankText + " of " + suitText;
+    return rankText[this.rank(this.id) - 1] + " of " + suitText[this.suit(this.id) - 1];
 };
 
 
@@ -124,8 +72,6 @@ makeCard.isCard = function(thing) { // --> true,false
     return true;
 };
 
-
-
 makeCard.numCheck = function (x) {
     if (typeof x !== "number" || x % 1 !== 0 || x > 51 || x < 0) {
         x = NaN;
@@ -138,9 +84,12 @@ makeCard.numCheck = function (x) {
 //---------------------
 
 makeCard.fullSet = []; //<-- instead, generate array of 52 card instances
+
+makeCard.makeSet = function() {
     for (var i = 0; i < 52; i++) {
-        makeCard.fullSet[i] = makeCard(i);
+        makeCard.fullSet.push(makeCard(i));
     }
+};
 
 
 //----------------------
@@ -156,6 +105,7 @@ var card0 = makeCard(0);
 var card3 = makeCard(3);
 var card5 = makeCard(5);
 var card51 = makeCard(51);
+makeCard.makeSet();
 
 // Test instance methods:
 assert(card0.rank()===1,  "Test 1 failed");
