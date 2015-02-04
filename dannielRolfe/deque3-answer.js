@@ -1,14 +1,14 @@
 // Problem 2a): build a deque factory
-fullSet = [];
-for (i = 0; i < 52; ++i){
-	fullSet.push(i)
-};
+	// var fullSet = [];
+	// for (i = 0; i < 52; ++i){
+	// 	fullSet.push(i)
+	// };
 
 // The factory itself:
 function makeDeque(values) {
 	// ...
 	var deque = {
-		values : values,
+		arr: values.slice(),
 		top : makeDeque.top,
 		bottom : makeDeque.bottom,
 		shift : makeDeque.shift,
@@ -25,14 +25,14 @@ function makeDeque(values) {
 // The factory's instance methods:
 makeDeque.length = function() {
 	return this.arr.length;
-}
+};
 
 makeDeque.top = function() {
-	return (this.arr[this.array.length - 1] )
+	return (this.arr[this.arr.length - 1] )
 }
 
 makeDeque.bottom = function() {
-	return this.arr[this.array(0)]
+	return this.arr[this.arr(0)]
 };
 
 makeDeque.pop = function() {
@@ -71,6 +71,7 @@ makeDeque.map = function(convertValFn) {
 
 makeDeque.sort = function(compareValsFn) {
 	//...
+	
 }
 
 //Calling
