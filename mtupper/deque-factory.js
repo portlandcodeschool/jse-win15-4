@@ -59,10 +59,10 @@ makeDeque.cut = function() {
     var cutPoint = this.arr.length;
 
     if (cutPoint % 2 !== 0) {
-        cutPoint = (cutPoint - 1) / 2;
+        cutPoint = (cutPoint - 1) / 2 + 1;
     }
     else {
-        cutPoint = (cutPoint / 2) - 1;
+        cutPoint = (cutPoint / 2);
     }
 
     for (var i = cutPoint; i < this.arr.length; i++) cutDeque.push(this.arr[i]);
@@ -78,6 +78,35 @@ makeDeque.sort = function(compareValsFn) {
 makeDeque.map = function(convertValFn) {
     return this.arr.map(convertValFn);
 };
+
+// Used the solution for this, not original content...
+makeDeque.shuffle = function () {
+    // Knuth-Fisher-Yates, modified from http://bost.ocks.org/mike/shuffle/
+    var end = this.array.length, temp, i;
+
+    // While there remain elements to shuffle…
+    while (end > 1) {
+
+        // Pick a remaining element…
+        i = Math.floor(Math.random() * end--);
+
+        // And swap it with the current element.
+        temp = this.array[end];
+        this.array[end] = this.array[i];
+        this.array[i] = temp;
+    }
+    // always successful; no return val needed
+};
+
+// Used the solution for this, not original content...
+makeDeque.readmit = function(val) { // returns true if val was absent
+    var foundAt = this.absent.indexOf(val);
+    if (foundAt < 0) // -1 if not found
+        return false;
+    // else found; excise from absent array
+    this.absent.splice(foundAt,1);
+    return true;
+}
 
 // Feel free to write tests for your code!
 
