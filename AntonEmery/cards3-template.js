@@ -79,14 +79,14 @@ makeCard.cardName = function() { //--> string, NaN
     // This method can't have the key 'name' within the makeCard function,
     // but instance objects can store a reference to it called 'name'
 
-    if (this.id == false || this.id < 0 || this.id > 51 || this.id%1 !== 0) {  // id == NaN does not work because NaN cannot equal NaN
-    return NaN;
-      } else {
+    // if (this.id == false || this.id < 0 || this.id > 51 || this.id%1 !== 0) {  // id == NaN does not work because NaN cannot equal NaN
+    // return NaN;
+    //   } else {
       var cardName = this.rank(this.id);
       var cSuit = this.suit(this.id);
       var fullName = (cardRank[cardName - 1] + ' of ' + cardSuit[cSuit - 1]);
       return fullName;
-  }
+  //}
 };
 
 
@@ -115,7 +115,6 @@ makeCard.fullDeck = function() {   //<-- instead, generate array of 52 card inst
   this.fullSet.push(makeCard(i));
   }
 
-  return this.fullSet;
 };
 
 makeCard.fullDeck();

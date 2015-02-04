@@ -65,9 +65,10 @@ makeDeque.unshift = function(val) {
 
 makeDeque.cut = function() {
 	//take the first half of the array
-	var firsthalf = this.array.splice(0, (Math.ceil(this.array.length / 2)));  
-	//concat that with is left 
-	return this.array.concat(firsthalf);
+	var midpoint = (Math.ceil(this.array.length / 2));
+	var firsthalf = this.array.slice(0, midpoint);  
+	var secondhalf = this.array.slice(midpoint, this.array.length);
+	this.array = secondhalf.concat(firsthalf);
 	}
 
 makeDeque.map = function(convertValFn) {
