@@ -1,17 +1,17 @@
 // Problem 2a): build a deque factory
 //-------
 
-fullSet = []; //<-- instead, generate array of 52 card instances
+/*fullSet = []; //<-- instead, generate array of 52 card instances
 for (var i = 0; i < 52; i++){
 	fullSet.push((i));
 }
-
+*/
 
 // The factory itself:
 function makeDeque(values) {
 	
 	var  newDeque= {
-    arr : fullSet.slice(0),
+        arr: values.slice(),
 		length: makeDeque.arrlength,
 		top: makeDeque.top,
 		bottom: makeDeque.bottom,
@@ -75,23 +75,27 @@ makeDeque.cut = function() {
 	return this.arr;
 }
 
-makeDeque.map = function(convertValFn) {
-	return this.arr.map()
+makeDeque.sort = function(compareValsFn) {
+	return this.arr.sort(compareValsFn)
 }
 
-makeDeque.sort = function(compareValsFn) {
-	return this.arr.sort()
+makeDeque.map = function(convertValFn) {
+	return this.arr.map(convertValFn)
 }
+
+
 
 // Feel free to write tests for your code!
-
-var testResults = makeDeque(fullSet)
+console.log(makeCard.fullSet)
+var testResults = makeDeque(makeCard.fullSet)
 
 
 console.log("length " + testResults.length())
-console.log("top " + testResults.top())
+console.log("top " + testResults.top().name())
 console.log("bottom " + testResults.bottom())
 console.log("pop " + testResults.pop())
 console.log("shift " + testResults.shift())
 console.log("unshift " + testResults.unshift())
 console.log("cut " + testResults.cut())
+/*console.log("sort " + testResults.sort(compareValsFn))
+console.log("map " + testResults.map(compareValsFn))*/

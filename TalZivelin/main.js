@@ -7,14 +7,38 @@
 // make a deque instance to store a full deck of cards:
 var deckOfCards = makeDeque(makeCard.fullSet);
 
+function compareValsFn(a,b)	{
+	
+			if  (a.suit() > b.suit()) {
+				return 1
+			}
+			
+			else	{
+			return -1
+		}
+}
 
-deckOfCards.sort();
 
-deckOfCards.sort(function(a, b){
-	return a-b
-});
+
+
+function nameOfCard(card){
+	
+	return card.name()
+}
+
+function cutOfCard(card){
+	
+	return card.name()
+}
+
+deckOfCards.sort(compareValsFn);
+console.log(deckOfCards.map(nameOfCard));
+
+console.log("sort result " + deckOfCards.sort(compareValsFn))
 
 deckOfCards.cut();
+console.log("cut " + deckOfCards.map(cutOfCard));
+
 assert(deckOfCards.top().name() === 'King of Diamonds', 'Failed King of Diamonds test');
 
 deckOfCards.sort(/* alphabetic comparison function */);
