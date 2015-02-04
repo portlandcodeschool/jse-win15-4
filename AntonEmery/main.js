@@ -3,7 +3,7 @@
 // At this point, both makeCard and makeDeque should be defined.
 
 
-// 2b:
+// 2b
 // make a deque instance to store a full deck of cards:
 var deckOfCards = makeDeque(makeCard.fullSet);  //had to change .fullSet to .fullDeck())
 
