@@ -7,6 +7,7 @@
 // The factory itself:
 function makeDeque(values) {
 	// ...
+	
 	var deque = {
 		arr: values.slice(),
 		top : makeDeque.top,
@@ -39,7 +40,7 @@ makeDeque.pop = function() {
 	return this.arr.pop; 
 }
 
-makeDeque.push = function(val) {
+makeDeque.push = function() {
 	return this.arr.push(val);
 }
 
@@ -47,7 +48,7 @@ makeDeque.shift = function() {
 	return this.arr.shift;
 }
 
-makeDeque.unshift = function(val) {
+makeDeque.unshift = function() {
 	return this.arr.unshift;
 }
 
@@ -71,7 +72,8 @@ makeDeque.map = function(convertValFn) {
 
 makeDeque.sort = function(compareValsFn) {
 	//...
-	
+	return this.arr.sort(compareValsFn);
+
 }
 
 //Calling
