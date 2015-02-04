@@ -1,6 +1,6 @@
 function makeCard(id) {
     // If id is invalid (out of range, etc)
-    if ((typeof id) != 'number' ||(id%1 !== 0) || (id > 51)) {
+    if ((typeof id) != 'number' || (id%1 !== 0) || (id > 51)) {
         return null; 
           }; 
 

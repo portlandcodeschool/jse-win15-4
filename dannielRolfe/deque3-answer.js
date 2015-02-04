@@ -1,7 +1,7 @@
 // Problem 2a): build a deque factory
 fullSet = [];
-for (var i = 0; i < 52; i++){
-	fullSet.push(makeCard[i])
+for (i = 0; i < 52; ++i){
+	fullSet.push(i)
 };
 
 // The factory itself:
@@ -52,19 +52,15 @@ makeDeque.unshift = function(val) {
 }
 
 makeDeque.cut = function() {
-	myNewDeque = this.arr.slice(0, Math.round(array[array.length/2]))
-	return myNewDeque
-	// for (i = 0; (Math.round(array.length/2) < i; i++) {
-	// 	//I want to return the values of the array and push them into a new array
-	// 	return this.array[].push(newArray1);
-	// }; 
+	firstSlice = [];
+	secondSlice = [];
 
-	// for (i = 0; (Math.round(array.length/2) > i; i++) {
-	// 	//I want to return the values of the array and push them into a new array
-	// 	return this.array[].push(newArray2);
-	// }; 
+	for(i = 0; i <= (this.fullSet.length/2) ; ++i) {
+		return this.arr.push(firstSlice)
+	}//for end 
 
-	// console.log(newArray2.join(newArray1));
+	console.log(secondSlice);
+	
 
 
 }
@@ -82,4 +78,3 @@ var testResult = makeDeque([makeDeque.length])
 
 // Feel free to write tests for your code!
 
-console.log(makeCard);
