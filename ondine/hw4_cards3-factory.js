@@ -51,21 +51,26 @@ makeCard.cardName = function() { //--> string, NaN
     return rankName[rank] + " of " + suitName[suit];
 };
 
-/* instance for testing */
-var card1 = makeCard(0);
-console.log(card1); // card1.name() etc
-
 //-----------------------
 // Methods to be called through factory only:
 //-----------------------
 
+makeCard.isCard = function(thing) { // --> true,false
+    // return true if thing is a valid card instance made by this factory
+  return thing
+    && (typeof thing === 'object')
+    && (thing.name === makeCard.cardName)
+    && ('id' in thing) && makeCard.isValid(thing.id);
+};
+
+/*
 makeCard.isCard = function(card) { // --> true,false
     // return true if thing is a valid card instance made by this factory
   return (typeof card === 'object' ? true : false);
 };
 
 console.log("Test 24 fails. Is it an object but not an instance?");
-
+*/
 //---------------------
 // Additional factory properties
 //---------------------
